@@ -1,0 +1,12 @@
+FileVersion = 1
+
+[Project]
+Name = "minimp3-beef"
+DefaultNamespace = "minimp3"
+
+[Configs.Debug.Win64]
+CLibType = "DynamicDebug"
+LibPaths = ["$(ProjectDir)\\libs\\debug\\minimp3.lib"]
+
+[Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)\\libs\\release\\minimp3.lib"]
