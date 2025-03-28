@@ -13,22 +13,22 @@ public static class minimp3
 	typealias uint64_t = uint64;
 	typealias int16_t = int16;
 
-	const c_int MINIMP3_MAX_SAMPLES_PER_FRAME = (1152 * 2);
+	public const c_int MINIMP3_MAX_SAMPLES_PER_FRAME = (1152 * 2);
 
 	[CRepr]
 	public struct mp3dec_frame_info_t
 	{
-		c_int frame_bytes, frame_offset, channels, hz, layer, bitrate_kbps;
+		public c_int frame_bytes, frame_offset, channels, hz, layer, bitrate_kbps;
 	}
 
 	[CRepr]
 	public struct mp3dec_t
 	{
-		float[2][9 * 32] mdct_overlap;
-		float[15 * 2 * 32] qmf_state;
-		c_int reserv, free_format_bytes;
-		c_uchar[4] header;
-		c_uchar[511] reserv_buf;
+		public float[2][9 * 32] mdct_overlap;
+		public float[15 * 2 * 32] qmf_state;
+		public c_int reserv, free_format_bytes;
+		public c_uchar[4] header;
+		public c_uchar[511] reserv_buf;
 	}
 
 	[CLink] public static extern void mp3dec_init(mp3dec_t* dec);
@@ -37,7 +37,8 @@ public static class minimp3
 	typealias mp3d_sample_t = int16_t;
 #else
 	typealias mp3d_sample_t = float;
-	[CLink] public static extern void mp3dec_f32_to_s16(float *in, int16_t *out, c_int num_samples);
+	[CLink] public static extern void mp3dec_f32_to_s16(float* input, int16_t* output, c_int num_samples);
 #endif
+
 	[CLink] public static extern c_int mp3dec_decode_frame(mp3dec_t* dec, uint8_t* mp3, c_int mp3_bytes, mp3d_sample_t* pcm, mp3dec_frame_info_t* info);
 }
